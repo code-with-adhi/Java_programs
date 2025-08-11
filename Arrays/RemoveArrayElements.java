@@ -1,0 +1,38 @@
+package Arrays;
+
+import java.util.Arrays;
+
+public class RemoveArrayElements {
+    public static int[] removeElements(int[] arr1, int[] arr2) {
+        int count = 0;
+        for (int num : arr1) {
+            if (!isInArray(num, arr2)) 
+            	count++;
+        }
+        
+        int[] result = new int[count];
+        int index = 0;
+        for (int num : arr1) {
+            if (!isInArray(num, arr2)) {
+                result[index++] = num;
+            }
+        }
+        return result;
+    }
+
+    private static boolean isInArray(int num, int[] arr) {
+        for (int element : arr) {
+            if (element == num) 
+            	return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(arr1));
+        int[] arr2 = {2, 4};
+        System.out.println(Arrays.toString(arr2));
+        System.out.println("Updated Array: " + Arrays.toString(removeElements(arr1, arr2)));
+    }
+}
